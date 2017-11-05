@@ -6,8 +6,7 @@ import requests
 import grequests
 from bs4 import BeautifulSoup
 
-urls = ['https://api.coinmarketcap.com/v1/ticker/bitcoin/',
-        'https://api.coinmarketcap.com/v1/ticker/ethereum']
+urls = ['https://api.coinmarketcap.com/v1/ticker/bitcoin/', 'https://api.coinmarketcap.com/v1/ticker/ethereum']
 
 def get_value(url):
     try:
@@ -21,4 +20,5 @@ def get_value(url):
     else: # return a message if we failed to connect to coinmarketcap
         return "Failed to retrieve data"
 
-print get_value(urls[1])
+if __name__ == '__main__':
+    print get_value(urls[0]) # placeholder url
