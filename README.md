@@ -1,4 +1,4 @@
-# crypto-values
+# CryptoFetch
 Uses coinmarketcap.com to retrieve values of cryptocurrencies 
 
 # Plans
