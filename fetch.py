@@ -9,6 +9,17 @@ from bs4 import BeautifulSoup
 urls = ['https://api.coinmarketcap.com/v1/ticker/bitcoin/', 'https://api.coinmarketcap.com/v1/ticker/ethereum']
 
 def get_value(url):
+    """ Retrieves cryptocurrency data from coinmarketcap.com
+    
+    Args:
+        url: string directing to api.coinmarketcap.com/v1/ticker/'
+        >>> get_value('https://api.coinmarketcap.com/v1/ticker/bitcoin/')
+    Returns:
+        tuple (coin symbol, coin value, 24h percent change)
+        >>> (u'BTC', u'6263.89', u'-6.02')
+    Raises:
+        ConnectionError: if connection could not be established with coinmarketcap
+    """
     try:
         rs = requests.get(url, timeout=5) # access page
     except requests.ConnectionError:
@@ -22,3 +33,4 @@ def get_value(url):
 
 if __name__ == '__main__':
     print get_value(urls[0]) # placeholder url
+    print get_value(urls[1])
