@@ -1,0 +1,18 @@
+{
+    "manifest_version": 2,
+
+    "name": "CryptoFetch",
+    "description": "This extension allows you to check the values of crypto-currencies quickly.",
+    "version": "0.1",
+    "browser_action": {
+        "default_popup": "popup.html"
+    },
+    "permissions": [
+        "activeTab",
+        "https://api.coinmarketcap.com/*"
+    ],
+    "background":
+    {
+        "scripts": ["js/fetch.js"]
+    }
+}
