@@ -2,7 +2,7 @@
 <html>
     <head>
         <script src="jquery-3.2.1.min.js"></script>
-        <script src="js/fetch.js"></script>
+        <script src="js/addCoin.js"></script>
         <link rel="stylesheet" href="popup.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     </head>
@@ -11,14 +11,23 @@
             <div id="header">
                 <ul class="nav nav-pills nav-fill">
                   <li class="nav-item">
-                    <a class="nav-link active" href="#">Home</a>
+                    <a class="nav-link" href="popup.html">Home</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="options.html">Settings</a>
+                    <a class="nav-link active" href="#">Settings</a>
                   </li>
                 </ul>
             </div>
             <div id="content">
+                <form>
+                    <div class="form-group">
+                    <label for="coinQuery">Add Coin</label>
+                    <input type="search" class="form-control" id="search" placeholder="search by name..." autoComplete="off">
+                    <ul class="list-group" id="results">
+                    </ul>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="cursor:pointer">Add</button>
+                </form>
             </div>
         </div>
     </body>

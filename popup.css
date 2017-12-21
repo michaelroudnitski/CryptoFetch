@@ -1,5 +1,17 @@
-#container {
+#container-fluid {
     width: 350px;
-    max-height: 520px;
+    height: 520px;
     padding: 20px;
+    overflow: hidden;
+}
+
+#header {
+    height: 12%;
+}
+
+#content {
+    height: 88%;
+    overflow-y: auto;
+    padding-left: 5px;
+    padding-right: 5px;
 }
