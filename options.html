@@ -2,7 +2,7 @@
 <html>
     <head>
         <script src="jquery-3.2.1.min.js"></script>
-        <script src="js/addCoin.js"></script>
+        <script src="js/settings.js"></script>
         <link rel="stylesheet" href="popup.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     </head>
@@ -21,13 +21,18 @@
             <div id="content">
                 <form>
                     <div class="form-group">
-                    <label for="coinQuery">Add Coin</label>
-                    <input type="search" class="form-control" id="search" placeholder="search by name..." autoComplete="off">
-                    <ul class="list-group" id="results">
-                    </ul>
+                        <h6>Add Coin</h6>
+                        <input type="search" class="form-control" id="search" placeholder="search by name..." autoComplete="off">
+                        <ul class="list-group" id="results">
+                        </ul>
                     </div>
-                    <button type="submit" class="btn btn-primary" style="cursor:pointer">Add</button>
+                    <button type="button" id="addButton" class="btn btn-primary" style="cursor:pointer" disabled>Add</button>
                 </form>
+                <br>
+                <h6>Coins You're Tracking</h6>
+                <ul class="list-group" id="trackedCoinsList">
+
+                </ul>
             </div>
         </div>
     </body>
