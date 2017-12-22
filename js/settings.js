@@ -32,6 +32,9 @@ function search(data) {
 
     if ($('#search').val().length == 0) {   // remove search results if the search box is empty
         $('#results').html('')
+        $('#addButton')[0].innerHTML = "Add";
+        $('#addButton')[0].disabled = true;
+        selected = null;
     } else {    // if the search box is not empty
         $.each(data, function(i, coin ) {   // for each item(coin) in our json data
             if ($('#results').children().length < 4) {  // if we have not yet found 4 matches
