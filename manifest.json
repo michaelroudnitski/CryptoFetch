@@ -3,7 +3,7 @@
 
     "name": "CryptoFetch",
     "description": "This extension allows you to check the values of crypto-currencies quickly.",
-    "version": "1.01",
+    "version": "1.02",
     "icons": {"128": "icon.png" },
     "browser_action": {
         "default_popup": "popup.html"
