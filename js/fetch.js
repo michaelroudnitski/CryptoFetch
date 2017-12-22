@@ -36,7 +36,7 @@ function getData(url) {
             if (jQuery.inArray(coin.name, selectedCoins) != -1){  // if the coin we are checking is one of our coins of interest
                 appendText(                 // create a card with the following data
                     coin.symbol,
-                    parseFloat(coin.price_usd).toFixed(2),
+                    parseFloat(coin.price_usd).toPrecision(5),
                     parseFloat(coin.percent_change_24h).toFixed(2),
                     convertTime(coin.last_updated)
                 );
