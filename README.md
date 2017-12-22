@@ -10,7 +10,3 @@ Lightweight Chrome extension built to quickly retreive and cleanly display basic
 ![2](https://i.imgur.com/9mITYe6.png)
 ![3](https://i.imgur.com/VFB7IHq.png)
 ![4](https://i.imgur.com/gdcN42v.png)
-
-# Extra Python Script Dependencies
-### Python 2.7
-requests, grequests, BeautifulSoup
