@@ -5,30 +5,30 @@ var selected = '';  // string storing the name of the coin the user wishes to ad
 
 $(document).ready(function() {
     var coinsJSON = {};             // object storing data retreived from coinmarketcap
-    $('#search').click(function(){  // when the user clicks on the text field
+    $('#search').click(function(){
         if (jQuery.isEmptyObject(coinsJSON)) {
             $.getJSON("https://api.coinmarketcap.com/v1/ticker/?limit=0").done(function(json) {
                 coinsJSON = json;
             });
         }
     });
-    $('#search').keyup(function() { // when the user finishes keyboard input
+    $('#search').keyup(function() {
         search(coinsJSON);
     });
 
     $('#addButton').click(function() {
-        if (selected.length > 0) {  // if the selection string exists
-            addToTrackedList(selected); // add the selected coin to the users list of coins to track
+        if (selected.length > 0) {
+            addToTrackedList(selected);
         }
     });
 
-    listCoins();    // list all coins selected by the user
+    listCoins();
 });
 
 function search(data) {
     // handles searching of available coins
     $('#results').html(''); // remove all previous results
-    var expression = new RegExp($('#search').val(), "i");   // create our regular expression
+    var expression = new RegExp($('#search').val(), "i");
 
     if ($('#search').val().length == 0) {   // remove search results if the search box is empty
         $('#results').html('')
@@ -36,24 +36,24 @@ function search(data) {
         $('#addButton')[0].disabled = true;
         selected = null;
     } else {    // if the search box is not empty
-        $.each(data, function(i, coin ) {   // for each item(coin) in our json data
-            if ($('#results').children().length < 4) {  // if we have not yet found 4 matches
+        $.each(data, function(i, coin ) {
+            if ($('#results').children().length < 4) {      // if we have not yet found 4 matches
                 if(coin.name.search(expression) != -1) {    // find a match with our regexp
-                    $('#results').append('<li class="list-group-item list-group-item-action">'+coin.name+'</li>'); // append each matching result as a list item
+                    $('#results').append('<li class="list-group-item list-group-item-action">'+coin.name+'</li>');
                     // no sorting necessary as cmc already provides JSON sorted by most popular
                 }
             }
         });
     }
 
-    $('.list-group-item-action').click(function() { // add a click listener to each search result
+    $('.list-group-item-action').click(function() {
         selected = this.innerHTML;  // sets the selection variable to the name of the coin clicked by the user
         $.each($(".list-group-item-action.active"), function() {
-            $(this).removeClass("active");  // make all list items inactive
+            $(this).removeClass("active");
         });
-        $(this).addClass("active"); // make the clicked list item active
-        if (this.innerHTML.length > 0) {    // if the selected list item is valid
-            $('#addButton')[0].disabled = false;    // set the button to active
+        $(this).addClass("active");
+        if (this.innerHTML.length > 0) {
+            $('#addButton')[0].disabled = false;
         }
         $('#addButton')[0].innerHTML = "Add "+$(this).html();   // change the text displayed by the button to contain the name of the selected coin
     });
@@ -61,11 +61,11 @@ function search(data) {
 
 function addToTrackedList(coinName) {
     // adds the selected coin to the users list of coins to track
-    coins = localStorage.getItem("coins").split(',');   // get the users preferences
+    coins = localStorage.getItem("coins").split(',');
     if (jQuery.inArray(coinName, coins) != -1) {
         return false;   // retrun false if the user is already tracking the selected coin
     } else {
-        coins.push(coinName);   // add the selected coin to the user's list
+        coins.push(coinName);                   // add the selected coin to the user's list
         localStorage.setItem("coins", coins);   // save the new list
         listCoins();                            // outputs the new list to the ui
         // reset search
@@ -79,10 +79,10 @@ function addToTrackedList(coinName) {
 }
 
 function listCoins() {
-    $("#trackedCoinsList").empty(); // removes current list from ui
-    var coins = localStorage.getItem("coins").split(',');   // retreive user's list of coins
-    if (coins.length > 0 && coins[0] != '') {               // if the users list of coins are not empty
-        for (i=0; i<coins.length; i++) {                    // create a list item for each coin
+    $("#trackedCoinsList").empty();
+    var coins = localStorage.getItem("coins").split(',');
+    if (coins.length > 0 && coins[0] != '') {
+        for (i=0; i<coins.length; i++) {                    // create a list element for each coin
             $('#trackedCoinsList').append(
                 "<li class=\"list-group-item\">"+coins[i]+"\
                     <button type=\"button\" class=\"close remove-coin\" id=\""+coins[i]+"\"aria-label=\"Close\">\
@@ -96,8 +96,8 @@ function listCoins() {
                 if (index > -1 && coins.length > 1) {       // if the coin is in the user's list and there are at least 2 coins
                     coins.splice(index, 1);                 // remove the coin from the user's list
                 }
-                localStorage.setItem("coins", coins);       // overwrite the preferences
-                listCoins();                                // output new list of coins to ui
+                localStorage.setItem("coins", coins);
+                listCoins();
             });
         });
     }
