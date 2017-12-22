@@ -25,16 +25,15 @@ function appendText(symbol, value, change, time) {
 }
 
 function getData(url) {
-    //localStorage.clear();
     if (localStorage.getItem("coins") == null) {
         localStorage.setItem("coins", ["Bitcoin", "Ethereum"]);
     }
     console.log(localStorage.getItem("coins").split(','));
     var selectedCoins = localStorage.getItem("coins").split(',');
-    $.getJSON(url, function(data) {    // get json from cmc api
+    $.getJSON(url, function(data) {
         $.each(data, function(i, coin ) {
-            if (jQuery.inArray(coin.name, selectedCoins) != -1){  // if the coin we are checking is one of our coins of interest
-                appendText(                 // create a card with the following data
+            if (jQuery.inArray(coin.name, selectedCoins) != -1){
+                appendText(
                     coin.symbol,
                     parseFloat(coin.price_usd).toPrecision(5),
                     parseFloat(coin.percent_change_24h).toFixed(2),
