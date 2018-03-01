@@ -3,6 +3,7 @@
 
 $(document).ready(function() {
     var cmcAPI = "https://api.coinmarketcap.com/v1/ticker/?limit=0";
+    $('#spinner').addClass('spinner');
     getData(cmcAPI);
 });
 
@@ -12,7 +13,7 @@ function appendText(symbol, value, change, time) {
     } else {
         var clr = "green";
     }
-    $("#content").append(
+    $("#popup-content").append(
         "<div class=\"card border-light mb-3\">\
             <div class=\"card-body\">\
                 <h5 class=\"card-text\" id=\"change\" style=\"color:"+clr+"\";>("+change+")</h5>\
@@ -28,7 +29,6 @@ function getData(url) {
     if (localStorage.getItem("coins") == null) {
         localStorage.setItem("coins", ["Bitcoin", "Ethereum"]);
     }
-    console.log(localStorage.getItem("coins").split(','));
     var selectedCoins = localStorage.getItem("coins").split(',');
     $.getJSON(url, function(data) {
         $.each(data, function(i, coin ) {
@@ -39,6 +39,8 @@ function getData(url) {
                     parseFloat(coin.percent_change_24h).toFixed(2),
                     convertTime(coin.last_updated)
                 );
+            $('#popup-content').animate({'margin-top': '0px'}, 100)
+            $('#spinner').removeClass('spinner');
             }
         });
     });
