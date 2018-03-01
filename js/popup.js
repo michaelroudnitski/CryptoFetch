@@ -1,4 +1,4 @@
-// fetch.js
+// popup.js
 // Michael Roudnitski 12/21/2017
 
 $(document).ready(function() {
@@ -9,9 +9,9 @@ $(document).ready(function() {
 
 function appendText(symbol, value, change, time) {
     if (change < 0){
-        var clr = "red";
+        var clr = "#dc3545";
     } else {
-        var clr = "green";
+        var clr = "#28a745";
     }
     $("#popup-content").append(
         "<div class=\"card border-light mb-3\">\
@@ -37,18 +37,24 @@ function getData(url) {
                     coin.symbol,
                     parseFloat(coin.price_usd).toPrecision(5),
                     parseFloat(coin.percent_change_24h).toFixed(2),
-                    convertTime(coin.last_updated)
+                    timeSince(coin.last_updated)
                 );
-            $('#popup-content').animate({'margin-top': '0px'}, 100)
+            $('#popup-content').animate({'margin-top': '0px'}, 175)
             $('#spinner').removeClass('spinner');
             }
         });
     });
 }
 
-function convertTime(time) {
-    var date = new Date(time*1000);
-    var hh = date.getHours();
-    var mm = "0" + date.getMinutes();
-    return hh+':'+mm.substr(-2);
+function timeSince(ts) {
+    var nowTs = Math.floor(new Date().getTime()/1000);
+    var delta = nowTs-ts;
+
+    if (delta > 2*24*3600) return "a few days ago";
+    if (delta > 24*3600) return "yesterday";
+    if (delta > 3600) return "a few hours ago";
+    if (delta > 1800) return "half an hour ago";
+    if (delta > 60) {
+       return Math.floor(delta/60) + " minute(s) ago";
+    }
 }
