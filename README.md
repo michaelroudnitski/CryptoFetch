@@ -6,7 +6,6 @@ Uses coinmarketcap's ticker api to retrieve values of cryptocurrencies. Built wi
 Lightweight Chrome extension built to quickly retreive and cleanly display basic information relative to user selected cryptocurrencies.
 
 # Screenshots
-![1](https://i.imgur.com/8mgMWVP.png)
-![2](https://i.imgur.com/9mITYe6.png)
-![3](https://i.imgur.com/VFB7IHq.png)
-![4](https://i.imgur.com/gdcN42v.png)
+![1](https://lh3.googleusercontent.com/7URXB9qx1xx3eylMmt_F_nC1Z6RMTCpHcm3gCRApC2vHTs2YAYiWgWkgKPDkv8WRkpRirolyNQ=w640-h400-e365)
+![2](https://lh3.googleusercontent.com/P7Vm34LGu3f4dDq_-2gLtzuDnB6jNXjCdwkvlpd7vokPnXFBZP7ilt5XbsguEdEJrix6GLLtthg=w640-h400-e365)
+![3](https://lh3.googleusercontent.com/J0FUg8aBvutANM2UDrqvPFllCazwhi_tQsd_Y-Z5qBL0LacQpAtCixW0oeDdUKdSSCnU0l31Pg=w640-h400-e365)
