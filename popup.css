@@ -1,16 +1,16 @@
 #container-fluid {
     width: 300px;
-    height: 600px;
-    padding: 20px;
+    height: 575px;
+    padding: 21px;
     overflow: hidden;
 }
 
 #header {
-    height: 12%;
+    height: 8%;
 }
 
 #popup-content {
-    height: 88%;
+    height: 92%;
     overflow-y: auto;
     padding-left: 5px;
     padding-right: 5px;
@@ -18,7 +18,7 @@
 }
 
 #settings-content {
-    height: 88%;
+    height: 92%;
     overflow-y: auto;
     padding-left: 5px;
     padding-right: 5px;

@@ -21,12 +21,12 @@ $(document).ready(function() {
             addToTrackedList(selected);
         }
     });
-
     listCoins();
+    listCurrencies();
+    selectCurrency();
 });
 
 function search(data) {
-    // handles searching of available coins
     $('#results').html(''); // remove all previous results
     var expression = new RegExp($('#search').val(), "i");
 
@@ -66,16 +66,34 @@ function addToTrackedList(coinName) {
         return false;   // retrun false if the user is already tracking the selected coin
     } else {
         coins.push(coinName);                   // add the selected coin to the user's list
-        localStorage.setItem("coins", coins);   // save the new list
-        listCoins();                            // outputs the new list to the ui
+        localStorage.setItem("coins", coins);
+        listCoins();
         // reset search
         $('#search')[0].value = '';
         $('#results').html('')
         $('#addButton')[0].innerHTML = "Add";
         $('#addButton')[0].disabled = true;
         selected = null;
-        //
     }
+}
+
+function listCurrencies() {
+    $('#currency').empty();
+    var currencies = ['USD', 'CAD', 'EUR', 'GBP', 'AUD']
+    var currentCurrency = localStorage.getItem("currency");
+    for (i=0; i<currencies.length; i++) {
+        if (currencies[i] != currentCurrency) {
+            $('#currency').append("<option value="+ currencies[i] + ">" + currencies[i] + "</option>");
+        } else {
+            $('#currency').append("<option value="+ currencies[i] + " selected>" + currencies[i] + "</option>");
+        }
+    }
+}
+
+function selectCurrency() {
+    $('#currency').change(function() {
+        localStorage.setItem("currency", this.value);
+    });
 }
 
 function listCoins() {
@@ -87,13 +105,13 @@ function listCoins() {
                 "<li class=\"list-group-item\">"+coins[i]+"\
                     <button type=\"button\" class=\"close remove-coin\" id=\""+coins[i]+"\"aria-label=\"Close\">\
                         <span aria-hidden=\"true\">&times;</span>\
-                    </button></h3>\
+                    </button>\
                 </li>");
         }
         $.each($(".close.remove-coin"), function() {        // add a removal button for each coin
             $(this).click(function() {
                 index = jQuery.inArray(this.id, coins);
-                if (index > -1 && coins.length > 1) {       // if the coin is in the user's list and there are at least 2 coins
+                if (index > -1 && coins.length > 1) {
                     coins.splice(index, 1);                 // remove the coin from the user's list
                 }
                 localStorage.setItem("coins", coins);
