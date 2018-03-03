@@ -1,6 +1,6 @@
 #container-fluid {
     width: 300px;
-    height: 575px;
+    height: 600px;
     padding: 21px;
     overflow: hidden;
 }
@@ -24,12 +24,12 @@
     padding-right: 5px;
 }
 
-.close {
-    cursor: pointer;
-}
-
 #change {
     float: right;
+}
+
+.close {
+    cursor: pointer;
 }
 
 @keyframes spinner {

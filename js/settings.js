@@ -79,7 +79,7 @@ function addToTrackedList(coinName) {
 
 function listCurrencies() {
     $('#currency').empty();
-    var currencies = ['USD', 'CAD', 'EUR', 'GBP', 'AUD']
+    var currencies = ['AUD', 'CAD', 'CNY', 'EUR', 'GBP', 'USD',]
     var currentCurrency = localStorage.getItem("currency");
     for (i=0; i<currencies.length; i++) {
         if (currencies[i] != currentCurrency) {
