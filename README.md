@@ -4,7 +4,6 @@ Uses coinmarketcap's ticker api to retrieve values of cryptocurrencies. Built wi
 # Depreciation Warning
 Depreceated due to CoinMarketCap API changes.
 
-[Try it out on the Chrome Web Store](https://chrome.google.com/webstore/detail/cryptofetch/hlpoeobjjmjlelkcodhmlnkbffajhine?utm_source=chrome-app-launcher-info-dialog)
 ## Main Features
 Lightweight Chrome extension built to quickly retreive and cleanly display basic information relative to user selected cryptocurrencies.
 
